@@ -7,38 +7,58 @@
     </div>
 
     <div class="cohort-members">
-      <div class="cohort-instructors">{{ cohort.instructors }}</div>
-      <div class="cohort-students">{{ cohort.students }}</div>
+      <span>Instructors</span>
+      <div class="cohort-instructors">
+        <UserIcon
+          v-for="instructor in cohort.instructors"
+          :key="instructor.github"
+          v-bind:github="instructor.github"
+        />
+      </div>
+
+      <span>Students</span>
+      <div class="cohort-students">
+        <UserIcon
+          v-for="student in cohort.students"
+          :key="student.github"
+          v-bind:github="student.github"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import UserIcon from "./UserIcon";
+
 export default {
   name: "Cohort",
   props: ["cohort"],
+  components: {
+    UserIcon,
+  },
 };
 </script>
 
 <style scoped>
 .cohort-wrapper {
-  margin: 5px;
+  margin-bottom: 25px;
   display: flex;
-  height: 10rem;
-  border: 1px solid black;
+  height: 15rem;
+  border: 10px solid rgb(180, 207, 207);
 }
 
 .cohort-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid black;
 }
 
 .cohort-members {
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 .cohort-instructors,
@@ -46,6 +66,5 @@ export default {
   width: 100%;
   display: flex;
   justify-content: center;
-  border: 1px solid black;
 }
 </style>

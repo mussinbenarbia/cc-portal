@@ -5,8 +5,8 @@ const CohortSchema = new Schema({
   name: String,
   startDate: Date,
   endDate: Date,
-  instructors: [{ type: Schema.Types.ObjectId }],
-  students: [{ type: Schema.Types.ObjectId }],
+  instructors: [{ type: Schema.Types.ObjectId, ref: "Instructor" }],
+  students: [{ type: Schema.Types.ObjectId, ref: "Student" }],
 });
 
 module.exports = mongoose.model("Cohort", CohortSchema);

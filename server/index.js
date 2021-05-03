@@ -38,6 +38,13 @@ app.get("/instructors", async (req, res) => {
 
 app.get("/cohorts", async (req, res) => {
   const allCohorts = await Cohort.find();
+  for (let cohort of allCohorts) {
+    await cohort
+      .populate("instructors")
+      .populate("students")
+      .execPopulate();
+  }
+
   res.json(allCohorts);
 });
 
