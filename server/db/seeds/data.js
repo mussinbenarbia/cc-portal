@@ -19,7 +19,6 @@ module.exports.studentsData = [
     twitter: "",
     cohort: "CC19",
     motto: "Understand. Pseudocode. Code!",
-    category: "student",
   },
   {
     name: "Russell Pacheco",
@@ -28,27 +27,24 @@ module.exports.studentsData = [
     twitter: "",
     cohort: "CC19",
     motto: "I'll beat you at Smash Bros!",
-    category: "student",
   },
 ];
 
-module.exports.instructors = [
+module.exports.instructorsData = [
   {
     name: "Vic Rene",
-    github: "something",
-    linkedin: "something",
-    twitter: "",
+    github: "sidiousvic",
+    linkedin: "sidiousvic",
+    twitter: "sidiousvic",
     cohorts: ["CC19", "CC17"],
-    motto: "I'll beat you at Smash Bros!",
-    category: "student",
+    motto: "Only criminals put anchovies on pizza.",
   },
   {
     name: "Sivani",
-    github: "something",
-    linkedin: "something",
-    twitter: "",
+    github: "heysivani",
+    linkedin: "heysivani",
+    twitter: "heysivani",
     cohorts: ["CC19", "CC17"],
-    motto: "I'll beat you at Smash Bros!",
-    category: "student",
+    motto: "Any questions?",
   },
 ];

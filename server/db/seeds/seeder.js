@@ -18,6 +18,12 @@ db.once("open", () => {
   console.log("Successfully connected");
 });
 
+const deleteEverything = async () => {
+  await Cohort.deleteMany({});
+  await Student.deleteMany({});
+  await Instructor.deleteMany({});
+};
+
 const seedDB = async () => {
   await Cohort.deleteMany({});
   await Student.deleteMany({});
@@ -37,9 +43,15 @@ const seedDB = async () => {
   }
 
   for (let instructor of instructorsData) {
-    let instructorObj = new Instructor(instructor);
-    let taughtCohorts = await Cohort.find(instructor.cohorts);
+    const instructorObj = new Instructor(instructor);
+    for (let taughtCohort of instructor.cohorts) {
+      const cohort = await Cohort.findOne({ name: taughtCohort });
+      cohort.instructors.push(instructorObj);
+      await cohort.save();
+    }
+    await instructorObj.save();
   }
 };
 
 seedDB();
+//deleteEverything();

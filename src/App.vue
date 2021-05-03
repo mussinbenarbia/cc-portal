@@ -1,17 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <Navbar @liClicked="test" v-bind:currentView="currentView" />
+    <Home v-if="currentView === 'Home'" />
+    <Cohorts v-if="currentView === 'Cohorts'" />
+    <Instructors v-if="currentView === 'Instructors'" />
+    <Students v-if="currentView === 'Students'" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Instructors from "./components/Instructors";
+import Students from "./components/Students";
+import Cohorts from "./components/Cohorts";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Navbar,
+    Home,
+    Instructors,
+    Students,
+    Cohorts,
+  },
+  data: function() {
+    return {
+      currentView: "Home",
+    };
+  },
+  methods: {
+    test: function(evt) {
+      this.currentView = evt;
+    },
+  },
+};
 </script>
 
 <style>
@@ -21,6 +44,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
