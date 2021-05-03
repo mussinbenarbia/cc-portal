@@ -4,7 +4,7 @@
 
 <script>
 import axios from "axios";
-import Cohort from "./Cohort";
+import Cohort from "../components/Cohort";
 
 export default {
   components: {

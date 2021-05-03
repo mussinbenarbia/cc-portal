@@ -10,7 +10,7 @@
 
 <script>
 import axios from "axios";
-import Student from "./Student";
+import Student from "../components/Student";
 
 export default {
   name: "Students",

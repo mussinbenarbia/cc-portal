@@ -22,7 +22,7 @@
               class="nav-link"
               v-bind:class="{ active: currentView === 'Cohorts' }"
               aria-current="page"
-              href="#"
+              href="#/cohorts"
               @click="$emit('liClicked', 'Cohorts')"
               >Cohorts</a
             >
@@ -32,7 +32,7 @@
               class="nav-link"
               v-bind:class="{ active: currentView === 'Students' }"
               aria-current="page"
-              href="#"
+              href="#/students"
               @click="$emit('liClicked', 'Students')"
               >Students</a
             >
@@ -42,7 +42,7 @@
               class="nav-link"
               v-bind:class="{ active: currentView === 'Instructors' }"
               aria-current="page"
-              href="#"
+              href="#/instructors"
               @click="$emit('liClicked', 'Instructors')"
               >Instructors</a
             >

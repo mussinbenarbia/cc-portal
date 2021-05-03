@@ -1,12 +1,12 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-  </div>
+  <div>HOME VIEW</div>
 </template>
 
 <script>
 export default {
   name: "Home",
-  components: {},
 };
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped></style>
