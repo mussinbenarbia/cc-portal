@@ -1,41 +1,10 @@
 <template>
-  <div>
-    <Navbar @liClicked="toggleView" v-bind:currentView="currentView" />
-    <Home v-if="currentView === 'Home'" />
-    <Cohorts v-if="currentView === 'Cohorts'" />
-    <Instructors v-if="currentView === 'Instructors'" />
-    <Students v-if="currentView === 'Students'" />
+  <div id="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
   </div>
+  <router-view/>
 </template>
-
-<script>
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import Instructors from "./components/Instructors";
-import Students from "./components/Students";
-import Cohorts from "./components/Cohorts";
-
-export default {
-  name: "App",
-  components: {
-    Navbar,
-    Home,
-    Instructors,
-    Students,
-    Cohorts,
-  },
-  data: function() {
-    return {
-      currentView: "Home",
-    };
-  },
-  methods: {
-    toggleView: function(evt) {
-      this.currentView = evt;
-    },
-  },
-};
-</script>
 
 <style>
 #app {
@@ -44,5 +13,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
