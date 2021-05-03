@@ -10,7 +10,7 @@
 
 <script>
 import axios from "axios";
-import Instructor from "./Instructor";
+import Instructor from "../components/Instructor";
 
 export default {
   components: {
