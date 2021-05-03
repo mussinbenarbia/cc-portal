@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar @liClicked="test" v-bind:currentView="currentView" />
+    <Navbar @liClicked="toggleView" v-bind:currentView="currentView" />
     <Home v-if="currentView === 'Home'" />
     <Cohorts v-if="currentView === 'Cohorts'" />
     <Instructors v-if="currentView === 'Instructors'" />
@@ -30,7 +30,7 @@ export default {
     };
   },
   methods: {
-    test: function(evt) {
+    toggleView: function(evt) {
       this.currentView = evt;
     },
   },
