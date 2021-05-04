@@ -4,10 +4,11 @@ const Schema = mongoose.Schema;
 const StudentSchema = new Schema({
   name: String,
   github: String,
+  cohort: String,
   linkedin: String,
   twitter: String,
-  cohort: String,
-  motto: String,
+  medium: String,
+  quote: String,
 });
 
 module.exports = mongoose.model("Student", StudentSchema);

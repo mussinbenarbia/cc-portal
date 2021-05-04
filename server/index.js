@@ -48,7 +48,14 @@ app.get("/cohorts", async (req, res) => {
   res.json(allCohorts);
 });
 
-app.post("/students", (req, res) => {});
+app.post("/students", async (req, res) => {
+  const newStudent = new Student(req.body);
+  const cohort = await Cohort.findOne({ name: newStudent.cohort });
+  cohort.students.push(newStudent);
+  await newStudent.save();
+  await cohort.save();
+  res.sendStatus(200);
+});
 
 app.post("/instructors", (req, res) => {});
 

@@ -7,7 +7,7 @@ const InstructorSchema = new Schema({
   linkedin: String,
   twitter: String,
   cohorts: [String],
-  motto: String,
+  quote: String,
 });
 
 module.exports = mongoose.model("Instructor", InstructorSchema);

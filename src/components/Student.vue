@@ -8,7 +8,7 @@
     <div class="card-body">
       <h5 class="card-title">{{ student.name }}</h5>
       <p class="card-text">
-        {{ student.motto }}
+        {{ student.quote }}
       </p>
     </div>
     <div>
