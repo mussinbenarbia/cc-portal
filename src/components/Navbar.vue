@@ -69,6 +69,16 @@
               >Add Instructor</a
             >
           </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              v-bind:class="{ active: currentView === 'addCohort' }"
+              aria-current="page"
+              href="#/add/cohort"
+              @click="$emit('liClicked', 'addCohort')"
+              >Add Cohort</a
+            >
+          </li>
         </ul>
       </div>
     </div>

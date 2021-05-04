@@ -63,7 +63,10 @@ app.post("/instructors", async (req, res) => {
   res.sendStatus(200);
 });
 
-app.post("/cohorts", (req, res) => {});
+app.post("/cohorts", async (req, res) => {
+  const newCohort = new Cohort(req.body);
+  newCohort.save();
+});
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {

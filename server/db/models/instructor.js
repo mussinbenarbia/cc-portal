@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const InstructorSchema = new Schema({
   name: String,
   github: String,
+  picture: String,
   linkedin: String,
   twitter: String,
   cohorts: [String],

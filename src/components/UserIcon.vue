@@ -23,4 +23,8 @@ export default {
   margin-bottom: 5px;
   display: block;
 }
+
+.selected {
+  border: 2px solid #42b983;
+}
 </style>

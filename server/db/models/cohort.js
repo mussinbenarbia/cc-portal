@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const CohortSchema = new Schema({
   name: String,
   startDate: Date,
-  endDate: Date,
+  gradDate: Date,
   instructors: [{ type: Schema.Types.ObjectId, ref: "Instructor" }],
   students: [{ type: Schema.Types.ObjectId, ref: "Student" }],
 });
