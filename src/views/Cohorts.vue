@@ -11,7 +11,7 @@ export default {
     Cohort,
   },
   created: async function() {
-    const { data: cohorts } = await axios.get("http://localhost:4000/cohorts");
+    const { data: cohorts } = await axios.get("/cohorts");
     this.cohorts = cohorts;
   },
 

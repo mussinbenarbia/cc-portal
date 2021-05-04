@@ -1,7 +1,7 @@
 <template>
-  <div id="form-wrapper" @submit="sendNewStudentToServer">
+  <div id="form-wrapper">
     <h3>Add Student</h3>
-    <form>
+    <form @submit.prevent="sendNewStudentToServer">
       <div class="form-floating mb-3">
         <input
           type="text"
@@ -93,7 +93,7 @@ export default {
         medium: this.medium,
         quote: this.quote,
       };
-      await axios.post("http://localhost:4000/students", newStudent);
+      await axios.post("/students", newStudent);
     },
   },
   data: function() {

@@ -1,7 +1,7 @@
 <template>
-  <div id="form-wrapper" @submit="sendNewStudentToServer">
+  <div id="form-wrapper">
     <h3>Add Instructor</h3>
-    <form>
+    <form @submit.prevent="sendNewInstructorToServer">
       <div class="form-floating mb-3">
         <input
           type="text"
@@ -73,7 +73,7 @@ import axios from "axios";
 export default {
   name: "AddStudent",
   methods: {
-    sendNewStudentToServer: async function() {
+    sendNewInstructorToServer: async function() {
       const newInstructor = {
         name: this.name,
         github: this.github,
@@ -82,7 +82,7 @@ export default {
         medium: this.medium,
         quote: this.quote,
       };
-      await axios.post("http://localhost:4000/instructors", newInstructor);
+      await axios.post("/instructors", newInstructor);
     },
   },
   data: function() {

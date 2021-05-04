@@ -1,9 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#" @click="$emit('liClicked', 'Home')"
-        >CC-Portal</a
-      >
+      <router-link class="navbar-brand" to="/">CC-Portal</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -18,65 +16,72 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a
+            <router-link
               class="nav-link"
               v-bind:class="{ active: currentView === 'Cohorts' }"
               aria-current="page"
-              href="#/cohorts"
-              @click="$emit('liClicked', 'Cohorts')"
-              >Cohorts</a
+              to="/cohorts"
+              >Cohorts</router-link
             >
           </li>
           <li class="nav-item">
-            <a
+            <router-link
               class="nav-link"
               v-bind:class="{ active: currentView === 'Students' }"
               aria-current="page"
-              href="#/students"
-              @click="$emit('liClicked', 'Students')"
-              >Students</a
+              to="/students"
+              >Students</router-link
             >
           </li>
           <li class="nav-item">
-            <a
+            <router-link
               class="nav-link"
               v-bind:class="{ active: currentView === 'Instructors' }"
               aria-current="page"
-              href="#/instructors"
-              @click="$emit('liClicked', 'Instructors')"
-              >Instructors</a
+              to="/instructors"
+              >Instructors</router-link
             >
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a
+            <router-link
               class="nav-link"
+              v-if="isLogged"
               v-bind:class="{ active: currentView === 'AddStudent' }"
               aria-current="page"
-              href="#/add/student"
-              @click="$emit('liClicked', 'AddStudent')"
-              >Add Student</a
+              to="/add/student"
+              >Add Student</router-link
             >
           </li>
           <li class="nav-item">
-            <a
+            <router-link
               class="nav-link"
+              v-if="isLogged"
               v-bind:class="{ active: currentView === 'addInstructor' }"
               aria-current="page"
-              href="#/add/instructor"
-              @click="$emit('liClicked', 'addInstructor')"
-              >Add Instructor</a
+              to="/add/instructor"
+              >Add Instructor</router-link
             >
           </li>
           <li class="nav-item">
-            <a
+            <router-link
               class="nav-link"
+              v-if="isLogged"
               v-bind:class="{ active: currentView === 'addCohort' }"
               aria-current="page"
-              href="#/add/cohort"
-              @click="$emit('liClicked', 'addCohort')"
-              >Add Cohort</a
+              to="/add/cohort"
+              >Add Cohort</router-link
+            >
+          </li>
+          <li class="nav-item">
+            <router-link
+              class="nav-link"
+              @click="isLogged ? logout() : login()"
+              v-bind:class="{ active: currentView === 'addCohort' }"
+              aria-current="page"
+              to="/"
+              >{{ isLogged ? "Logout" : "Login" }}</router-link
             >
           </li>
         </ul>
@@ -87,8 +92,21 @@
 
 <script>
 export default {
-  props: ["currentView"],
+  props: ["isLogged"],
   name: "Navbar",
+  data: function() {
+    return {
+      currentView: "",
+    };
+  },
+  methods: {
+    logout: function() {
+      this.$emit("logout");
+    },
+    login: function() {
+      this.$router.push("/login");
+    },
+  },
 };
 </script>
 

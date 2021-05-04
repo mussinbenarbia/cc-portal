@@ -1,13 +1,26 @@
 <template>
   <div id="app-wrapper">
-    <Navbar />
-    <router-view />
+    <Navbar v-bind:isLogged="isLogged" @logout="logout" />
+    <router-view @login="login" />
   </div>
 </template>
 
 <script>
 import Navbar from "./components/Navbar";
 export default {
+  methods: {
+    login: function() {
+      this.isLogged = true;
+    },
+    logout: function() {
+      this.isLogged = false;
+    },
+  },
+  data: function() {
+    return {
+      isLogged: false,
+    };
+  },
   components: {
     Navbar,
   },

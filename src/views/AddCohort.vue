@@ -1,7 +1,7 @@
 <template>
-  <div id="form-wrapper" @submit="sendNewCohortToServer">
+  <div id="form-wrapper">
     <h3>Add Cohort</h3>
-    <form>
+    <form @submit.prevent="sendNewCohortToServer">
       <div class="form-floating mb-3">
         <input
           type="text"
@@ -86,7 +86,7 @@ export default {
           .map((inst) => inst._id),
       };
       console.log(newCohort);
-      await axios.post("http://localhost:4000/cohorts", newCohort);
+      await axios.post("/cohorts", newCohort);
     },
   },
   data: function() {

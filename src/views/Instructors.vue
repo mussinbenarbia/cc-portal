@@ -18,9 +18,7 @@ export default {
   },
 
   created: async function() {
-    const { data: instructors } = await axios.get(
-      "http://localhost:4000/instructors"
-    );
+    const { data: instructors } = await axios.get("/instructors");
     this.instructors = instructors;
   },
 
