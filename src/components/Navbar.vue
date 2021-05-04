@@ -48,6 +48,28 @@
             >
           </li>
         </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              v-bind:class="{ active: currentView === 'AddStudent' }"
+              aria-current="page"
+              href="#/add/student"
+              @click="$emit('liClicked', 'AddStudent')"
+              >Add Student</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              v-bind:class="{ active: currentView === 'addInstructor' }"
+              aria-current="page"
+              href="#/add/instructor"
+              @click="$emit('liClicked', 'addInstructor')"
+              >Add Instructor</a
+            >
+          </li>
+        </ul>
       </div>
     </div>
   </nav>

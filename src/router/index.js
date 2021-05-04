@@ -4,6 +4,7 @@ import About from "../views/About.vue";
 import Cohorts from "../views/Cohorts";
 import Students from "../views/Students";
 import Instructors from "../views/Instructors";
+import AddStudent from "../views/AddStudent";
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: "/instructors",
     name: "Instructors",
     component: Instructors,
+  },
+  {
+    path: "/add/student",
+    name: "AddStudent",
+    component: AddStudent,
   },
   {
     path: "/about",

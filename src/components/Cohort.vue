@@ -45,7 +45,7 @@ export default {
   margin-bottom: 25px;
   display: flex;
   height: 15rem;
-  border: 10px solid rgb(180, 207, 207);
+  border: 10px solid #42b983;
 }
 
 .cohort-info {
