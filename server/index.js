@@ -1,10 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const session = require("express-session");
 const mongoose = require("mongoose");
 const Student = require("./db/models/student");
 const Instructor = require("./db/models/instructor");
 const Cohort = require("./db/models/cohort");
+const User = require("./db/models/user");
+const passport = require("passport");
+const passportLocal = require("passport-local");
 
 mongoose.connect("mongodb://localhost:27017/cc-portal", {
   useNewUrlParser: true,
@@ -13,18 +17,25 @@ mongoose.connect("mongodb://localhost:27017/cc-portal", {
 });
 
 const db = mongoose.connection;
-db.on("error", () => {
-  console.log("Oh no there was an error");
-});
-db.once("open", () => {
-  console.log("Successfully connected");
-});
 
 const app = express();
 
+const sessionConfig = {
+  secret: "testSecret123",
+  resave: true,
+  saveUninitialized: true,
+};
+
 app.use(morgan("tiny"));
-app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:8080" }));
 app.use(express.json());
+app.use(session(sessionConfig));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new passportLocal(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.get("/students", async (req, res) => {
   const allStudents = await Student.find();
@@ -66,6 +77,23 @@ app.post("/instructors", async (req, res) => {
 app.post("/cohorts", async (req, res) => {
   const newCohort = new Cohort(req.body);
   newCohort.save();
+});
+
+app.post("/register", async (req, res) => {
+  const { username, password } = req.body;
+  const user = new User({ username });
+  const registeredUser = await User.register(user, password);
+  res.sendStatus(200);
+});
+
+app.get("/login", async (req, res) => {
+  if (req.isAuthenticated) return res.sendStatus(200);
+  return res.sendStatus(401);
+});
+
+app.post("/login", passport.authenticate("local"), async (req, res) => {
+  console.log(req.user);
+  res.json({ message: "You are now logged in." });
 });
 
 const port = process.env.PORT || 4000;

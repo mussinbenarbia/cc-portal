@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import Cohorts from "../views/Cohorts";
@@ -7,6 +7,8 @@ import Instructors from "../views/Instructors";
 import AddStudent from "../views/AddStudent";
 import AddInstructor from "../views/AddInstructor";
 import AddCohort from "../views/AddCohort";
+import Register from "../views/Register";
+import Login from "../views/Login";
 
 const routes = [
   {
@@ -45,6 +47,16 @@ const routes = [
     component: AddCohort,
   },
   {
+    path: "/register",
+    name: "Register",
+    component: Register,
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+  },
+  {
     path: "/about",
     name: "About",
     component: About,
@@ -52,7 +64,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 });
 
