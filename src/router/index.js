@@ -5,6 +5,7 @@ import Cohorts from "../views/Cohorts";
 import Students from "../views/Students";
 import Instructors from "../views/Instructors";
 import AddStudent from "../views/AddStudent";
+import AddInstructor from "../views/AddInstructor";
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     path: "/add/student",
     name: "AddStudent",
     component: AddStudent,
+  },
+  {
+    path: "/add/instructor",
+    name: "AddInstructor",
+    component: AddInstructor,
   },
   {
     path: "/about",

@@ -37,5 +37,7 @@ export default {
 <style scoped>
 .students-wrapper {
   display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 </style>

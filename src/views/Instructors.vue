@@ -38,5 +38,7 @@ export default {
 <style scoped>
 .instructors-wrapper {
   display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 </style>

@@ -57,7 +57,11 @@ app.post("/students", async (req, res) => {
   res.sendStatus(200);
 });
 
-app.post("/instructors", (req, res) => {});
+app.post("/instructors", async (req, res) => {
+  const newInstructor = new Instructor(req.body);
+  await newInstructor.save();
+  res.sendStatus(200);
+});
 
 app.post("/cohorts", (req, res) => {});
 
