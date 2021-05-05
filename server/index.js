@@ -43,23 +43,6 @@ app.get("/students", async (req, res) => {
   res.json(allStudents);
 });
 
-app.get("/instructors", async (req, res) => {
-  const allInstructors = await Instructor.find();
-  res.json(allInstructors);
-});
-
-app.get("/cohorts", async (req, res) => {
-  const allCohorts = await Cohort.find();
-  for (let cohort of allCohorts) {
-    await cohort
-      .populate("instructors")
-      .populate("students")
-      .execPopulate();
-  }
-
-  res.json(allCohorts);
-});
-
 app.post("/students", async (req, res) => {
   const newStudent = new Student(req.body);
   const cohort = await Cohort.findOne({ name: newStudent.cohort });
@@ -81,15 +64,38 @@ app.post("/instructors", async (req, res) => {
   res.sendStatus(200);
 });
 
+app.get("/instructors", async (req, res) => {
+  const allInstructors = await Instructor.find();
+  res.json(allInstructors);
+});
+
 app.delete("/instructors/:id", async (req, res) => {
   const { id } = req.params;
   const instructorToDelete = await Instructor.findByIdAndDelete(id);
   res.sendStatus(200);
 });
 
+app.get("/cohorts", async (req, res) => {
+  const allCohorts = await Cohort.find();
+  for (let cohort of allCohorts) {
+    await cohort
+      .populate("instructors")
+      .populate("students")
+      .execPopulate();
+  }
+
+  res.json(allCohorts);
+});
+
 app.post("/cohorts", async (req, res) => {
   const newCohort = new Cohort(req.body);
   newCohort.save();
+});
+
+app.delete("/cohorts/:id", async (req, res) => {
+  const { id } = req.params;
+  const cohortToDelete = await Cohort.findByIdAndDelete(id);
+  res.sendStatus(200);
 });
 
 app.post("/register", async (req, res) => {

@@ -106,8 +106,15 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 5rem;
 }
+
+.instructors {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
 form {
   width: 20rem;
 }

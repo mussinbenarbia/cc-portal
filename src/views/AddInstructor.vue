@@ -104,7 +104,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 5rem;
 }
 form {
   width: 20rem;

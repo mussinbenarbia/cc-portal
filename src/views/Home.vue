@@ -1,5 +1,8 @@
 <template>
-  <div>HOME VIEW</div>
+  <div id="home-wrapper">
+    <img id="theboss" src="../assets/potato.jpg" alt="" />
+    <h2>Welcome!</h2>
+  </div>
 </template>
 
 <script>
@@ -18,4 +21,14 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+#home-wrapper {
+  margin-top: 5rem;
+}
+
+#theboss {
+  width: 30rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+</style>

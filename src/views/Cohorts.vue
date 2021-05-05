@@ -4,6 +4,7 @@
       v-for="cohort in cohorts"
       :key="cohort.name"
       v-bind:cohort="cohort"
+      @deleteCohort="deleteCohort"
     />
   </div>
 </template>
@@ -16,13 +17,17 @@ export default {
   components: {
     Cohort,
   },
+  methods: {
+    deleteCohort: async function(id) {
+      this.cohorts = this.cohorts.filter((cohort) => cohort._id !== id);
+      await axios.delete(`/cohorts/${id}`);
+    },
+  },
   created: async function() {
     const { data: cohorts } = await axios.get("/cohorts");
     this.cohorts = cohorts.sort(function(a, b) {
       return new Date(b.startDate) - new Date(a.startDate);
     });
-
-    console.log(this.cohorts);
   },
 
   data: function() {

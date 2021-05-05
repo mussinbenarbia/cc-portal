@@ -1,11 +1,13 @@
 <template>
-  <div class="students-wrapper">
-    <Student
-      v-for="student in students"
-      :key="student._id"
-      v-bind:student="student"
-      @deleteStudent="deleteStudent"
-    />
+  <div class="students">
+    <div class="students-wrapper">
+      <Student
+        v-for="student in students"
+        :key="student._id"
+        v-bind:student="student"
+        @deleteStudent="deleteStudent"
+      />
+    </div>
   </div>
 </template>
 
@@ -43,10 +45,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.students {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border: 2px solid black;
+}
+
 .students-wrapper {
   margin-top: 1rem;
   display: flex;
-  justify-content: space-evenly;
+
   flex-wrap: wrap;
+  width: 63%;
+  border: 1px solid red;
 }
 </style>

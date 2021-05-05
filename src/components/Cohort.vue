@@ -33,7 +33,8 @@
       </div>
     </div>
     <button
-      @click="$emit('deleteStudent', student._id)"
+      v-if="isLogged()"
+      @click="$emit('deleteCohort', cohort._id)"
       type="button"
       class="btn btn-sm btn-danger delete-cohort"
     >
@@ -46,6 +47,11 @@
 import UserIcon from "./UserIcon";
 
 export default {
+  methods: {
+    isLogged: function() {
+      return this.$root.isLogged;
+    },
+  },
   name: "Cohort",
   props: ["cohort"],
   components: {

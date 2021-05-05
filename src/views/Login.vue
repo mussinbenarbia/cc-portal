@@ -1,27 +1,31 @@
 <template>
-  <div id="login-form">
-    <form @submit.prevent="sendLogin">
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          id="username"
-          aria-describedby="username"
-          placeholder="Username"
-          v-model="username"
-        />
-      </div>
-      <div class="form-group">
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
-          placeholder="Password"
-          v-model="password"
-        />
-      </div>
-      <button type="submit" class="btn btn-success">Login</button>
-    </form>
+  <div>
+    <div id="login-form">
+      <form @submit.prevent="sendLogin">
+        <h3>Login</h3>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            aria-describedby="username"
+            placeholder="Username"
+            v-model="username"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+            v-model="password"
+          />
+        </div>
+        <button type="submit" class="btn btn-success">Login</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -56,7 +60,7 @@ export default {
   margin-top: 5rem;
   display: flex;
   justify-content: center;
-  height: 10rem;
+  height: 15rem;
 }
 
 form {
