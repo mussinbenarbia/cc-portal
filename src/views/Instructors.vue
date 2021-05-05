@@ -4,6 +4,7 @@
       v-for="instructor in instructors"
       :key="instructor._id"
       v-bind:instructor="instructor"
+      @deleteInstructor="deleteInstructor"
     />
   </div>
 </template>
@@ -28,6 +29,15 @@ export default {
     };
   },
 
+  methods: {
+    deleteInstructor: async function(id) {
+      this.instructors = this.instructors.filter(
+        (instructor) => instructor._id !== id
+      );
+      await axios.delete(`/instructors/${id}`);
+    },
+  },
+
   name: "Instructors",
 };
 </script>
@@ -38,5 +48,6 @@ export default {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  margin-top: 1rem;
 }
 </style>

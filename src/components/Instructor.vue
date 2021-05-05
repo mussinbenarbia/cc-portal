@@ -28,6 +28,15 @@
           ><i class="social-icon fab fa-2x fa-medium"></i
         ></a>
       </div>
+      <div class="controls" v-if="isLogged()">
+        <button
+          @click="$emit('deleteInstructor', instructor._id)"
+          type="button"
+          class="btn btn-sm btn-danger"
+        >
+          Delete
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -36,6 +45,11 @@
 export default {
   name: "Instructor",
   props: ["instructor"],
+  methods: {
+    isLogged: function() {
+      return this.$root.isLogged;
+    },
+  },
 };
 </script>
 
@@ -51,5 +65,9 @@ export default {
 
 .social-icon {
   padding: 5px;
+}
+
+.controls {
+  margin: 5px;
 }
 </style>

@@ -2,12 +2,12 @@ module.exports.cohortsData = [
   {
     name: "CC19",
     startDate: new Date(2021, 2, 29),
-    endDate: new Date(2021, 5, 18),
+    gradDate: new Date(2021, 5, 18),
   },
   {
     name: "CC17",
     startDate: new Date(2020, 11, 15),
-    endDate: new Date(2021, 2, 18),
+    gradDate: new Date(2021, 2, 18),
   },
 ];
 

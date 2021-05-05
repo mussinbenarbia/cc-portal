@@ -1,5 +1,11 @@
 <template>
-  <Cohort v-for="cohort in cohorts" :key="cohort.name" v-bind:cohort="cohort" />
+  <div id="cohorts-wrapper">
+    <Cohort
+      v-for="cohort in cohorts"
+      :key="cohort.name"
+      v-bind:cohort="cohort"
+    />
+  </div>
 </template>
 
 <script>
@@ -12,7 +18,11 @@ export default {
   },
   created: async function() {
     const { data: cohorts } = await axios.get("/cohorts");
-    this.cohorts = cohorts;
+    this.cohorts = cohorts.sort(function(a, b) {
+      return new Date(b.startDate) - new Date(a.startDate);
+    });
+
+    console.log(this.cohorts);
   },
 
   data: function() {
@@ -28,4 +38,11 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+#cohorts-wrapper {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>

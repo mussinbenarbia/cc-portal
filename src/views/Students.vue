@@ -4,6 +4,7 @@
       v-for="student in students"
       :key="student._id"
       v-bind:student="student"
+      @deleteStudent="deleteStudent"
     />
   </div>
 </template>
@@ -30,12 +31,20 @@ export default {
       students: [],
     };
   },
+
+  methods: {
+    deleteStudent: async function(id) {
+      this.students = this.students.filter((student) => student._id !== id);
+      await axios.delete(`/students/${id}`);
+    },
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .students-wrapper {
+  margin-top: 1rem;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;

@@ -2,8 +2,15 @@
   <div class="cohort-wrapper">
     <div class="cohort-info">
       <div class="cohort-name">{{ cohort.name }}</div>
-      <div class="cohort-start">{{ cohort.startDate }}</div>
-      <div class="cohort-end">{{ cohort.endDate }}</div>
+      <div class="cohort-dates">
+        <div class="cohort-start">
+          {{ new Date(cohort.startDate).toLocaleDateString() }}
+        </div>
+        ~
+        <div class="cohort-end">
+          {{ new Date(cohort.gradDate).toLocaleDateString() }}
+        </div>
+      </div>
     </div>
 
     <div class="cohort-members">
@@ -25,6 +32,13 @@
         />
       </div>
     </div>
+    <button
+      @click="$emit('deleteStudent', student._id)"
+      type="button"
+      class="btn btn-sm btn-danger delete-cohort"
+    >
+      Delete
+    </button>
   </div>
 </template>
 
@@ -42,16 +56,21 @@ export default {
 
 <style scoped>
 .cohort-wrapper {
-  margin-bottom: 25px;
   display: flex;
   height: 15rem;
-  border: 10px solid #42b983;
+  width: 90%;
+  border-top: 1px solid #42b983;
+}
+
+.cohort-wrapper:nth-last-of-type(1) {
+  border-bottom: 1px solid #42b983;
 }
 
 .cohort-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 30%;
 }
 
 .cohort-members {
@@ -66,5 +85,17 @@ export default {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.cohort-name {
+  font-size: 2rem;
+}
+
+.cohort-dates {
+  margin-top: 1rem;
+}
+.delete-cohort {
+  margin-top: 1rem;
+  align-self: flex-start;
 }
 </style>

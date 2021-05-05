@@ -1,19 +1,23 @@
 <template>
   <div id="app-wrapper">
-    <Navbar v-bind:isLogged="isLogged" @logout="logout" />
+    <Navbar @logout="logout" />
     <router-view @login="login" />
   </div>
 </template>
 
 <script>
 import Navbar from "./components/Navbar";
+import axios from "axios";
+
 export default {
   methods: {
     login: function() {
       this.isLogged = true;
     },
-    logout: function() {
+    logout: async function() {
+      await axios.get("/logout");
       this.isLogged = false;
+      this.$router.push("/");
     },
   },
   data: function() {

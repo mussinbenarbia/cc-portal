@@ -47,7 +47,7 @@
           <li class="nav-item">
             <router-link
               class="nav-link"
-              v-if="isLogged"
+              v-if="this.$root.isLogged"
               v-bind:class="{ active: currentView === 'AddStudent' }"
               aria-current="page"
               to="/add/student"
@@ -57,7 +57,7 @@
           <li class="nav-item">
             <router-link
               class="nav-link"
-              v-if="isLogged"
+              v-if="this.$root.isLogged"
               v-bind:class="{ active: currentView === 'addInstructor' }"
               aria-current="page"
               to="/add/instructor"
@@ -67,7 +67,7 @@
           <li class="nav-item">
             <router-link
               class="nav-link"
-              v-if="isLogged"
+              v-if="this.$root.isLogged"
               v-bind:class="{ active: currentView === 'addCohort' }"
               aria-current="page"
               to="/add/cohort"
@@ -77,11 +77,11 @@
           <li class="nav-item">
             <router-link
               class="nav-link"
-              @click="isLogged ? logout() : login()"
+              @click="this.$root.isLogged ? logout() : login()"
               v-bind:class="{ active: currentView === 'addCohort' }"
               aria-current="page"
               to="/"
-              >{{ isLogged ? "Logout" : "Login" }}</router-link
+              >{{ this.$root.$data.isLogged ? "Logout" : "Login" }}</router-link
             >
           </li>
         </ul>

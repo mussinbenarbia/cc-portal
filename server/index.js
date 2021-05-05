@@ -9,6 +9,7 @@ const Cohort = require("./db/models/cohort");
 const User = require("./db/models/user");
 const passport = require("passport");
 const passportLocal = require("passport-local");
+const student = require("./db/models/student");
 
 mongoose.connect("mongodb://localhost:27017/cc-portal", {
   useNewUrlParser: true,
@@ -68,9 +69,21 @@ app.post("/students", async (req, res) => {
   res.sendStatus(200);
 });
 
+app.delete("/students/:id", async (req, res) => {
+  const { id } = req.params;
+  const studentToDelete = await Student.findByIdAndDelete(id);
+  res.sendStatus(200);
+});
+
 app.post("/instructors", async (req, res) => {
   const newInstructor = new Instructor(req.body);
   await newInstructor.save();
+  res.sendStatus(200);
+});
+
+app.delete("/instructors/:id", async (req, res) => {
+  const { id } = req.params;
+  const instructorToDelete = await Instructor.findByIdAndDelete(id);
   res.sendStatus(200);
 });
 
@@ -87,13 +100,18 @@ app.post("/register", async (req, res) => {
 });
 
 app.get("/login", async (req, res) => {
-  if (req.isAuthenticated) return res.sendStatus(200);
+  if (req.isAuthenticated()) return res.sendStatus(200);
   return res.sendStatus(401);
 });
 
 app.post("/login", passport.authenticate("local"), async (req, res) => {
   console.log(req.user);
   res.json({ message: "You are now logged in." });
+});
+
+app.get("/logout", async (req, res) => {
+  req.logout();
+  res.sendStatus(200);
 });
 
 const port = process.env.PORT || 4000;
