@@ -49,15 +49,12 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  border: 2px solid black;
 }
 
 .students-wrapper {
   margin-top: 1rem;
   display: flex;
-
+  justify-content: center;
   flex-wrap: wrap;
-  width: 63%;
-  border: 1px solid red;
 }
 </style>

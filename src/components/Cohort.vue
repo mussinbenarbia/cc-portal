@@ -19,7 +19,7 @@
         <UserIcon
           v-for="instructor in cohort.instructors"
           :key="instructor.github"
-          v-bind:github="instructor.github"
+          v-bind:picture="instructor.picture"
         />
       </div>
 
@@ -28,7 +28,7 @@
         <UserIcon
           v-for="student in cohort.students"
           :key="student.github"
-          v-bind:github="student.github"
+          v-bind:picture="student.picture"
         />
       </div>
     </div>

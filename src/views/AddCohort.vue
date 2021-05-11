@@ -39,7 +39,7 @@
           v-for="instructor in instructors"
           v-bind:class="{ selected: instructor.selected === true }"
           :key="instructor._id"
-          v-bind:github="instructor.github"
+          v-bind:picture="instructor.picture"
           @click="toggleTeacher(instructor._id)"
         />
       </div>
@@ -85,8 +85,8 @@ export default {
           .filter((inst) => inst.selected)
           .map((inst) => inst._id),
       };
-      console.log(newCohort);
       await axios.post("/cohorts", newCohort);
+      this.$router.push("/cohorts");
     },
   },
   data: function() {
@@ -106,7 +106,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: 1rem;
 }
 
 .instructors {

@@ -18,16 +18,6 @@
           class="form-control"
           id="floatingInput"
           placeholder="''"
-          v-model="github"
-        />
-        <label for="floatingInput">Github Handle</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input
-          type="text"
-          class="form-control"
-          id="floatingInput"
-          placeholder="''"
           v-model="cohort"
         />
         <label for="floatingInput">Cohort</label>
@@ -38,9 +28,29 @@
           class="form-control"
           id="floatingInput"
           placeholder="''"
+          v-model="picture"
+        />
+        <label for="floatingInput">Picture Url</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="''"
+          v-model="github"
+        />
+        <label for="floatingInput">Github Url</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="''"
           v-model="linkedin"
         />
-        <label for="floatingInput">Linkedin Handle</label>
+        <label for="floatingInput">Linkedin Url</label>
       </div>
       <div class="form-floating mb-3">
         <input
@@ -50,7 +60,7 @@
           placeholder="''"
           v-model="twitter"
         />
-        <label for="floatingInput">Twitter Handle</label>
+        <label for="floatingInput">Twitter Url</label>
       </div>
       <div class="form-floating mb-3">
         <input
@@ -60,7 +70,7 @@
           placeholder="''"
           v-model="medium"
         />
-        <label for="floatingInput">Medium Handle</label>
+        <label for="floatingInput">Medium Url</label>
       </div>
       <div class="form-floating mb-3">
         <input
@@ -70,7 +80,7 @@
           placeholder="''"
           v-model="quote"
         />
-        <label for="floatingInput">Yearbook Quote!</label>
+        <label for="floatingInput">Quote!</label>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
@@ -86,6 +96,7 @@ export default {
     sendNewStudentToServer: async function() {
       const newStudent = {
         name: this.name,
+        picture: this.picture,
         github: this.github,
         cohort: this.cohort,
         linkedin: this.linkedin,
@@ -94,6 +105,7 @@ export default {
         quote: this.quote,
       };
       await axios.post("/students", newStudent);
+      this.$router.push("/students");
     },
   },
   data: function() {
@@ -105,6 +117,7 @@ export default {
       twitter: "",
       medium: "",
       quote: "",
+      picture: "",
     };
   },
 };
@@ -116,7 +129,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: 1rem;
 }
 form {
   width: 20rem;

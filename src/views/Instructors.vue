@@ -1,11 +1,13 @@
 <template>
-  <div class="instructors-wrapper">
-    <Instructor
-      v-for="instructor in instructors"
-      :key="instructor._id"
-      v-bind:instructor="instructor"
-      @deleteInstructor="deleteInstructor"
-    />
+  <div class="instructors">
+    <div class="instructors-wrapper">
+      <Instructor
+        v-for="instructor in instructors"
+        :key="instructor._id"
+        v-bind:instructor="instructor"
+        @deleteInstructor="deleteInstructor"
+      />
+    </div>
   </div>
 </template>
 
@@ -44,10 +46,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.instructors-wrapper {
+.instructors {
+  width: 100%;
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.instructors-wrapper {
   margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 </style>

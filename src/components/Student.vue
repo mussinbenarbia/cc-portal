@@ -1,10 +1,6 @@
 <template>
   <div class="card student-wrapper" style="width: 18rem;">
-    <img
-      v-bind:src="`https://avatars.githubusercontent.com/${student.github}`"
-      class="card-img-top"
-      alt="..."
-    />
+    <img v-bind:src="student.picture" class="card-img-top" alt="..." />
     <div class="card-body">
       <h5 class="card-title">{{ student.name }}</h5>
       <p class="card-text">
@@ -13,26 +9,18 @@
     </div>
     <div>
       <div class="social-wrapper">
-        <a
-          v-if="student.linkedin"
-          v-bind:href="`https://www.linkedin.com/in/${student.linkedin}/`"
+        <a v-if="student.linkedin" v-bind:href="student.linkedin"
           ><i class="social-icon fab fa-2x fa-linkedin-in"></i
         ></a>
-        <a
-          v-if="student.github"
-          v-bind:href="`https://github.com/${student.github}`"
+        <a v-if="student.github" v-bind:href="student.github"
           ><i class="social-icon fab fa-2x fa-github"></i
         ></a>
 
-        <a
-          v-if="student.twitter"
-          v-bind:href="`https://twitter.com/${student.twitter}`"
+        <a v-if="student.twitter" v-bind:href="student.twitter"
           ><i class="social-icon fab fa-2x fa-twitter"></i
         ></a>
 
-        <a
-          v-if="student.medium"
-          v-bind:href="`https://twitter.com/${student.medium}`"
+        <a v-if="student.medium" v-bind:href="student.medium"
           ><i class="social-icon fab fa-2x fa-medium"></i
         ></a>
       </div>
@@ -40,10 +28,8 @@
         <button
           @click="$emit('deleteStudent', student._id)"
           type="button"
-          class="btn btn-sm btn-danger"
-        >
-          Delete
-        </button>
+          class="btn-close btn-close-black btn-sm  position-absolute top-0 end-0"
+        ></button>
       </div>
     </div>
   </div>
@@ -77,5 +63,11 @@ export default {
 
 .controls {
   margin: 5px;
+}
+
+.card-img-top {
+  max-height: 300px;
+  max-width: 300px;
+  object-fit: cover;
 }
 </style>
