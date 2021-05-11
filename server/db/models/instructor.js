@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const InstructorSchema = new Schema({
   name: String,
-  github: String,
   picture: String,
+  github: String,
   linkedin: String,
   twitter: String,
-  cohorts: [String],
+  medium: String,
   quote: String,
 });
 
